@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:controller="com.fx.light.controller.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.light.controller.Controller">
    <children>
       <TableView prefHeight="200.0" prefWidth="200.0">
         <columns>
@@ -16,8 +16,8 @@
       </TableView>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" text="Add" />
-            <Button  fx:id="convertButton" mnemonicParsing="false" text="Convert"/>
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addOriginalFile" text="Add" />
+            <Button fx:id="convertButton" mnemonicParsing="false" text="Convert" />
          </children>
       </HBox>
    </children>

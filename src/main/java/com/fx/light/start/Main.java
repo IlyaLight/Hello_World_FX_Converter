@@ -1,19 +1,16 @@
-package com.fx.light;
+package com.fx.light.start;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    // чтобы создать JavaFX приложения, достаточно реализовать метод start(Stage)
+    // чтобы создать JavaFX приложения, достаточно реализовать метод com.fx.light.start(Stage)
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        System.out.println(System.getProperty("user.dir"));
         Parent root = FXMLLoader.load(getClass().getResource("/view/Converter.fxml"));
 
         primaryStage.setTitle("Hello World");   // задаем заголовок окна

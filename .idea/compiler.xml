@@ -19,8 +19,8 @@
         <module name="Hello_World_FX" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="10">
-      <module name="Hello_World_FX" target="10" />
+    <bytecodeTargetLevel>
+      <module name="Hello_World_FX" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

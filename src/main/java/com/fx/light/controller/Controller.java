@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.util.List;
 
 
 public class Controller {
@@ -18,20 +19,24 @@ public class Controller {
     private Button convertButton;
 
 
-    /** добовляем фойл для конвертации
+    /** добовляем файл для конвертации
     **/
     @FXML
     private void addOriginalFile(ActionEvent event){
         FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
         fileChooser.setTitle("Open Document");//Заголовок диалога
-        FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html");//Расширение
-        fileChooser.getExtensionFilters().add(extFilter);
-        File file = fileChooser.showOpenDialog(addButton.getScene().getWindow());//Указываем текущую сцену CodeNote.mainStage
+       //Расширение
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Files", "*.*")
+                );
+        List<File> files = fileChooser.showOpenMultipleDialog(addButton.getScene().getWindow());//Указываем текущую сцену CodeNote.mainStage
         //File file = chooser.showOpenDialog(new Stage());
-        if (file != null) {
+        if (files != null) {
             //Open
-            System.out.println("Процесс открытия файла");
+            for (File file : files) {
+                System.out.println("Процесс открытия файла:  " + file.getName());
+            }
+
         }
     }
 
