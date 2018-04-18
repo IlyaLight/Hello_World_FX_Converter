@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -41,7 +40,6 @@ public class Converter {
         outData.append(String.format(FORMAT_DEFINE_NUM_LEDS, pixelNumber));
         String[] progmem = new String[fileList.size()];
 
-        //перебираем изображения
         ListIterator<File> listIterator = fileList.listIterator();
         for (File file = listIterator.next(); listIterator.hasNext(); file=listIterator.next()) {
             int fileIndex = listIterator.nextIndex()-1;
