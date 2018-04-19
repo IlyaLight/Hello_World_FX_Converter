@@ -3,6 +3,7 @@
     active_background: rgb(76, 80, 82, 1);
     text: rgb(187, 187, 187, 1);
     border: rgb(94, 96, 96, 1);
+    active: rgb(57, 93, 130);
 
     -fx-background-color: base;
     -fx-opacity: 1;
@@ -15,7 +16,7 @@
     -fx-border-width: 0 1 1 1, 1 0 0 0;
     -fx-border-radius: 2, 2;
     -fx-border-color: border, border;
-    -fx-background-radius: 0;
+    -fx-background-radius: 2;
     -fx-background-insets: 0.0;
     -fx-effect: dropshadow(one-pass-box, derive(base, -10%), 0, 0, 0, 2);
     -fx-text-fill: text;
@@ -27,4 +28,12 @@
     -fx-opacity: 1;
     -fx-background-color: base;
     -fx-text-fill: border;
+}
+
+.button:focused
+{
+    -fx-border-width: 2 2 1 2, 2 1 2 2;
+    -fx-border-radius: 2, 2;
+    -fx-border-color: active, active;
+    -fx-border-insets: -3, -3;
 }

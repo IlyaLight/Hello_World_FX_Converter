@@ -2,12 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@styles/II.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.light.controller.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/II.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.light.controller.Controller">
    <children>
       <TableView fx:id="fileTable" prefHeight="200.0" prefWidth="200.0">
         <columns>
@@ -22,12 +24,11 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin></Button>
+            <CheckBox mnemonicParsing="false" text="CheckBox" />
+            <RadioButton mnemonicParsing="false" text="RadioButton" />
          </children>
       </HBox>
-      <Button fx:id="convertButton1" disable="true" mnemonicParsing="false" text="Convert">
-         <padding>
-            <Insets left="6.0" />
-         </padding>
+      <Button fx:id="convertButton1" mnemonicParsing="false" text="Convert">
          <VBox.margin>
             <Insets left="6.0" />
          </VBox.margin>
