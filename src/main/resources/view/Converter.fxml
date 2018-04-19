@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.light.controller.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@styles/II.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.light.controller.Controller">
    <children>
       <TableView fx:id="fileTable" prefHeight="200.0" prefWidth="200.0">
         <columns>
@@ -18,9 +18,19 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#addOriginalFile" text="Add" />
-            <Button fx:id="convertButton" mnemonicParsing="false" text="Convert" />
-            <JFXButton text="test" />
+            <Button fx:id="convertButton" mnemonicParsing="false" snapToPixel="false" text="Convert">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Button>
          </children>
       </HBox>
+      <Button fx:id="convertButton1" disable="true" mnemonicParsing="false" text="Convert">
+         <padding>
+            <Insets left="6.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="6.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

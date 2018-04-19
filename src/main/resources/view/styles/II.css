@@ -1,0 +1,30 @@
+.root {
+    base: rgb(60, 63, 65, 1);
+    active_background: rgb(76, 80, 82, 1);
+    text: rgb(187, 187, 187, 1);
+    border: rgb(94, 96, 96, 1);
+
+    -fx-background-color: base;
+    -fx-opacity: 1;
+
+}
+
+.button{
+    -fx-padding: 3px;
+    -fx-background-color: active_background;
+    -fx-border-width: 0 1 1 1, 1 0 0 0;
+    -fx-border-radius: 2, 2;
+    -fx-border-color: border, border;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0.0;
+    -fx-effect: dropshadow(one-pass-box, derive(base, -10%), 0, 0, 0, 2);
+    -fx-text-fill: text;
+
+}
+
+.button:disabled, .button:default:disabled
+{
+    -fx-opacity: 1;
+    -fx-background-color: base;
+    -fx-text-fill: border;
+}
