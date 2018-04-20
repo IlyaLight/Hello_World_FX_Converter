@@ -1,27 +1,55 @@
 .root {
-    base: rgb(60, 63, 65, 1);
-    active_background: rgb(76, 80, 82, 1);
-    text: rgb(187, 187, 187, 1);
-    border: rgb(94, 96, 96, 1);
-    active: rgb(57, 93, 130);
+    base: #2D2D30;
+    /*base: rgb(60, 63, 65, 1);*/
+
+    active_background: derive(base, 15%);
+    /*active_background: rgb(76, 80, 82, 1);*/
+    border: #484848;
+    /*border: derive(base, 30%);*/
+    /*border: rgb(94, 96, 96, 1);*/
+    text:           #BFBEB9;
+    active:         #007ACC;
+    active_text:    #dFdfdf;
+    radius: 2px;
 
     -fx-background-color: base;
-    -fx-opacity: 1;
+
+    -fx-font-size: 1em;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-dark-text-color: navy;
+    -fx-mid-text-color: text;
+    -fx-light-text-color: active_text;
+
+
+
 
 }
 
-.button{
-    -fx-padding: 3px;
-    -fx-background-color: active_background;
-    -fx-border-width: 0 1 1 1, 1 0 0 0;
-    -fx-border-radius: 2, 2;
-    -fx-border-color: border, border;
-    -fx-background-radius: 2;
+.separator{
+    -fx-background: border;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Push Button                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.button,
+.button:default:armed{
+    -fx-background-color: base;
+    -fx-border-style:  segments(1, 0);
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-border-insets: 0;
+    -fx-border-color: border;
+    -fx-background-radius: 0;
     -fx-background-insets: 0.0;
     -fx-effect: dropshadow(one-pass-box, derive(base, -10%), 0, 0, 0, 2);
-    -fx-text-fill: text;
+    -fx-padding: 0;
 
 }
+
 
 .button:disabled, .button:default:disabled
 {
@@ -32,8 +60,203 @@
 
 .button:focused
 {
-    -fx-border-width: 2 2 1 2, 2 1 2 2;
-    -fx-border-radius: 2, 2;
-    -fx-border-color: active, active;
-    -fx-border-insets: -3, -3;
+    -fx-border-color: active;
+}
+
+.button:armed,
+.button:default{
+    -fx-border-color: active;
+    -fx-background-color: active;
+    -fx-text-fill: -fx-light-text-color;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Scroll Bar			                                                       *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-bar:vertical>.track-background, .scroll-bar:horizontal>.track-background
+{
+    -fx-background-color: border;
+    //-fx-background-insets: 10 0 10 0;
+}
+
+.scroll-bar:vertical>.thumb, .scroll-bar:horizontal>.thumb {
+    -fx-background-color: derive(border, 20%);
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar>.increment-button, .scroll-bar>.decrement-button,
+.scroll-bar:hover>.increment-button, .scroll-bar:hover>.decrement-button
+{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar>.increment-button>.increment-arrow,
+.scroll-bar>.decrement-button>.decrement-arrow
+{
+    -fx-background-color: derive(border, 20%);
+}
+
+.scroll-bar>.track-background {
+    -fx-background-color: transparent;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TableView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.table-view,
+.tree-table-view {
+    /* Constants used throughout the tableview. */
+    -fx-table-header-border-color: border;
+    -ft-table-headet-border-width: 0 2 2 0;
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: border;
+}
+/***** ROW CELLS **************************************************************/
+/* Each row in the table is a table-row-cell. Inside a table-row-cell is any
+   number of table-cell. */
+.table-row-cell {
+    -fx-background:transparent;
+    -fx-text-fill: -fx-text-background-color;
+}
+.table-row-cell:odd {
+    /*-fx-background: derive(base, -40%)*/
+}
+/***** INDIVIDUAL CELLS ********************************************************/
+.table-cell {
+    -fx-padding: 0 0 0 10; /* 2px, plus border adds 1px */
+    -fx-background-color: null;
+    -fx-border-color: transparent transparent transparent transparent;
+    /*-fx-cell-size: 2.0em; !* 24 *!*/
+    /*-fx-font-family: "Consolas";*/
+    -fx-text-fill: text;
+}
+
+/***** HEADER **********************************************************************/
+
+/* This is the area behind the column headers. An ideal place to specify background
+   and border colors for the whole area (not individual column-header's). */
+.table-view .column-header-background,
+.tree-table-view > .column-header-background {
+    -fx-background-color: transparent, transparent;
+    -fx-background-insets: 0, 1;
+}
+/* The column header row is made up of a number of column-header, one for each
+   TableColumn, and a 'filler' area that extends from the right-most column
+   to the edge of the tableview, or up to the 'column control' button. */
+.table-view .column-header,
+.tree-table-view .column-header,
+.table-view .filler,
+.tree-table-view .filler,
+.table-view > .column-header-background > .show-hide-columns-button,
+.tree-table-view > .column-header-background > .show-hide-columns-button,
+.table-view:constrained-resize .filler,
+.tree-table-view:constrained-resize .filler {
+    -fx-border-width: 2 0 2 0;
+    -fx-border-color: border;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-size: 2em;
+    -fx-text-fill: text;
+    -fx-padding: 0.166667em;
+}
+
+/* Set the font size and text color for column headers */
+.table-view .column-header .label,
+.tree-table-view .column-header .label {
+    -fx-alignment: center;
+    -fx-text-fill: text;
+}
+
+/* When a column is being 'dragged' to be placed in a different position, there
+   is a region that follows along the column header area to indicate where the
+   column will be dropped. This region can be styled using the .column-drag-header
+   name. */
+.table-view .column-drag-header,
+.table-view .column-drag-header .label,
+.tree-table-view .column-drag-header {
+
+    -fx-background-color: active;
+    -fx-text-fill: active_text;
+
+    -fx-opacity: 1;
+}
+/* Semi-transparent overlay to indicate the column that is currently being moved */
+.table-view .column-overlay,
+.tree-table-view .column-overlay {
+    -fx-background-color: darkgray;
+    -fx-opacity: 0.2;
+}
+
+/* This is shown when the table has no rows and/or no columns. */
+.table-view .empty-table,
+.tree-table-view .empty-table {
+    -fx-background-color: white;
+    -fx-font-size: 1.166667em; /* 14pt - 2 more than the default font */
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:horizontal{
+    -fx-padding: 5 0 5 0;
+    -fx-background-color: transparent;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ListView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.list-view {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+
+
+}
+
+.list-view:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 2 0 0 10;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background-insets: 0,1 0 1 0;
+    -fx-background-color:  derive(active, -30%), base;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background: border;
+    /*-fx-border-color: derive(active, -30%);*/
+    -fx-border-width: 0;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused:selected {
+    -fx-background-color: -fx-background;
+    -fx-background-insets: 0;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused{
+    -fx-text-fill: -fx-light-text-color;
 }

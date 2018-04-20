@@ -6,9 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 
@@ -20,15 +18,18 @@ import java.util.List;
 public class Controller {
 
     @FXML
-    public TableView<OriginalFile> fileTable;
+    public ListView<OriginalFile> listFiles;
     @FXML
-    public TableColumn<OriginalFile, String> nameColumn;
+    private Button buttonConvert;
     @FXML
-    public TableColumn<OriginalFile, String> pathColumn;
+    private Button buttonAdd;
     @FXML
-    private Button addButton;
+    private Button buttonDelit;
     @FXML
-    private Button convertButton;
+    private Button buttonUp;
+    @FXML
+    private Button buttonDown;
+
 
     private ObservableList<OriginalFile> originalFileList = FXCollections.observableArrayList();
 
@@ -36,7 +37,7 @@ public class Controller {
     /** добовляем файл для конвертации
     **/
     @FXML
-    private void addOriginalFile(ActionEvent event){
+    private void addOriginalFiles(ActionEvent event){
         FileChooser fileChooser = new FileChooser();//Класс работы с диалогом выборки и сохранения
         fileChooser.setTitle("Open Document");//Заголовок диалога
        //Расширение
@@ -44,7 +45,7 @@ public class Controller {
                 new FileChooser.ExtensionFilter("PNG","*.png"),
                 new FileChooser.ExtensionFilter("TXT","*.txt")
                 );
-        List<File> files = fileChooser.showOpenMultipleDialog(addButton.getScene().getWindow());//Указываем текущую сцену CodeNote.mainStage
+        List<File> files = fileChooser.showOpenMultipleDialog(buttonAdd.getScene().getWindow());//Указываем текущую сцену CodeNote.mainStage
         //File file = chooser.showOpenDialog(new Stage());
         if (files != null) {
             for (File file : files) {
@@ -52,13 +53,22 @@ public class Controller {
             }
 
         }
-        fileTable.setItems(originalFileList);
+        listFiles.setItems(originalFileList);
     }
 
     @FXML
     private void initialize() {
-        nameColumn.setCellValueFactory(new PropertyValueFactory<OriginalFile, String>("name"));
-        pathColumn.setCellValueFactory(new PropertyValueFactory<OriginalFile, String>("path"));
-
+        listFiles.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        listFiles.setCellFactory(param -> new ListCell<OriginalFile>(){
+            @Override
+            protected void updateItem(OriginalFile item, boolean empty){
+                super.updateItem(item, empty);
+                if (empty || item == null || item.getName() == null) {
+                    setText(null);
+                } else {
+                    setText(item.getName());
+                }
+            }
+        });
     }
 }
